@@ -79,6 +79,7 @@ fun interp {pl:nat} (prog: string(pl)): void = let
           then $raise Overflow()
           else loop (pc + 1, ptr + 1u)
         | '.' => (let val _ = putchar1(g0ofg1 (u2i cur)) in loop (pc + 1, ptr) end)
+		| ',' => (state[ptr] := i2u (max (getchar1(), 0)); loop (pc + 1, ptr))
         | '\[' => 
           if cur = 0
           then loop (find_match_rb pc, ptr)
