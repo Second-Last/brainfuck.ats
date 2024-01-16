@@ -99,14 +99,14 @@ implement main0 (argc, argv) =
     else let
       val f: FILEref = fileref_open_exn (argv[1], file_mode_r)
       val raw = fileref_get_file_string f
-        val () = fileref_close f
-        val len = strptr_length raw
-        val content: string = strptr2string raw
-        (*
-        val p: Strnptr1 = strptr2strnptr(raw)
-        *)
+      val () = fileref_close f
+      val len = strptr_length raw
+      val content: string = strptr2string raw
+      (*
+      val p: Strnptr1 = strptr2strnptr(raw)
+      *)
     in
       if string_length content < 0
-      then println! "Sooooo short?"
+      then ()
       else interp content
     end
